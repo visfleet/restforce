@@ -61,9 +61,9 @@ module Restforce
       def initialize(opts = {})
         raise ArgumentError, 'Please specify a hash of options' unless opts.is_a?(Hash)
 
-        @options = Restforce.configuration.options.to_h do |option|
+        @options = Restforce.configuration.options.map do |option|
           [option, Restforce.configuration.send(option)]
-        end
+        end.to_h
 
         @options.merge! opts
         yield builder if block_given?
