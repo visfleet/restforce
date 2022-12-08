@@ -31,11 +31,6 @@ describe Restforce::ErrorCode do
       subject              { described_class.get_exception_class(new_error_code) }
 
       it { should be Restforce::ResponseError }
-
-      it 'outputs a warning' do
-        expect(Warning).to receive(:warn)
-        subject
-      end
     end
 
     context 'when a known error code is looked up' do
